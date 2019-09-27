@@ -1,11 +1,15 @@
 {
-  "name": "fetch",
+  "name": "@sibi-tech/ask",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "test": "NODE_ENV=development jest",
     "test:watch": "yarn test --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wowsaruss/ask"
   },
   "dependencies": {
     "node-fetch": "^2.6.0"
