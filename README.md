@@ -9,13 +9,13 @@ A simple wrapper for [node-fetch](https://www.npmjs.com/package/node-fetch)
 Add it to your repo.
 
 ```
-$ npm add @wowsaruss/ask
+$ npm add @tech_sibi/ask
 ```
 
 Require ask at the top of you node.js file.
 
 ```
-const ask = require('@wowsaruss/ask');
+const ask = require('@tech_sibi/ask');
 ```
 
 Making a GET request.
