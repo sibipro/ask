@@ -12,7 +12,7 @@ Add it to your repo.
 $ npm add @tech_sibi/ask
 ```
 
-Require ask at the top of you node.js file.
+Require ask at the top of your node.js file.
 
 ```
 const ask = require('@tech_sibi/ask');
