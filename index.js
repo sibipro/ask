@@ -1,3 +1,3 @@
 const ask = require('./ask');
 
-module.exports = { ask };
+module.exports = ask;
