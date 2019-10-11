@@ -2,20 +2,20 @@
 
 A simple wrapper for [node-fetch](https://www.npmjs.com/package/node-fetch)
 
-[View on NPM](https://www.npmjs.com/package/@tech_sibi/ask)
+[View on NPM](https://www.npmjs.com/package/@sibipro/ask)
 
 ## Usage
 
 Add it to your repo.
 
 ```
-$ npm add @tech_sibi/ask
+$ yarn add @sibipro/ask
 ```
 
 Require ask at the top of you node.js file.
 
 ```
-const ask = require('@tech_sibi/ask');
+const ask = require('@sibipro/ask');
 ```
 
 Making a GET request.
