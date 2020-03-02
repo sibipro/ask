@@ -1,6 +1,6 @@
 {
-  "name": "@tech_sibi/ask",
-  "version": "1.0.3",
+  "name": "@sibipro/ask",
+  "version": "1.1.5",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -20,5 +20,16 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": "coverage"
-  }
+  },
+  "keywords": [
+    "node-fetch",
+    "http",
+    "https",
+    "node",
+    "js",
+    "javascript",
+    "request",
+    "network",
+    "wrapper"
+  ]
 }
