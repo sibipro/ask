@@ -129,5 +129,51 @@ describe('fetch request', () => {
         method: 'get',
       });
     });
+
+    test('sets the content-type header', async () => {
+      const body = { hello: 'world' };
+      await ask('test/fetch/url', {
+        method: 'get',
+        responseType: 'json',
+        body,
+      });
+
+      expect(fetch).toHaveBeenCalledWith('test/fetch/url', expect.objectContaining({
+        headers: { 'Content-Type': 'application/json' }
+      }));
+    });
+
+    test('does not change the content-type header if set', async () => {
+      await ask('test/fetch/url', {
+        method: 'get',
+        responseType: 'json',
+        body: {},
+        headers: {
+          'Content-Type': 'text/plain'
+        }
+      });
+
+      expect(fetch).toHaveBeenCalledWith('test/fetch/url', expect.objectContaining({
+        headers: { 'Content-Type': 'text/plain' }
+      }));
+    });
+
+    test('does not affect other headers', async () => {
+      await ask('test/fetch/url', {
+        method: 'get',
+        responseType: 'json',
+        body: {},
+        headers: {
+          'X-Sent-From': 'jest'
+        }
+      });
+
+      expect(fetch).toHaveBeenCalledWith('test/fetch/url', expect.objectContaining({
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Sent-From': 'jest',
+        },
+      }));
+    });
   });
 });
