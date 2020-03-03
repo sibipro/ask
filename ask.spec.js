@@ -89,4 +89,45 @@ describe('fetch request', () => {
       expect(err.statusCode).toEqual(500);
     }
   });
+
+  describe('object body', () => {
+    beforeEach(() => {
+      fetch.mockResolvedValue({ ok: true, json: jest.fn() });
+    });
+
+    test('stringifies the object body', async () => {
+      const body = { stringify: 'me' };
+      await ask('test/fetch/url', {
+        method: 'get',
+        responseType: 'json',
+        body,
+      });
+
+      expect(fetch).toHaveBeenCalledWith(
+        'test/fetch/url',
+        expect.objectContaining({
+          body: JSON.stringify(body),
+        })
+      );
+    });
+
+    test('does nothing if body is a string', async () => {
+      await ask('test/fetch/url', {
+        method: 'get',
+        responseType: 'json',
+        body: '{}',
+        headers: {
+          'X-Sent-From': 'jest',
+        },
+      });
+
+      expect(fetch).toHaveBeenCalledWith('test/fetch/url', {
+        body: '{}',
+        headers: {
+          'X-Sent-From': 'jest',
+        },
+        method: 'get',
+      });
+    });
+  });
 });
