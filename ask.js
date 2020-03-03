@@ -11,7 +11,25 @@ const encodeBody = config => {
   if (!isObject(config.body)) return config;
 
   // if body is an object, stringify it
-  return { ...config, body: JSON.stringify(config.body) };
+  const newConfig = { ...config, body: JSON.stringify(config.body) };
+
+  // set content-type header if not already set
+  if (!config.headers) {
+    return {
+      ...newConfig,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+  }
+
+  const keys = Object.keys(config.headers);
+  const contentType = keys.find(key => key.toLowerCase() === 'content-type');
+
+  // content-type header exists, don't modify it
+  if (contentType) return newConfig;
+
+  return { ...newConfig, headers: { ...config.headers, 'Content-Type': 'application/json' } };
 };
 
 module.exports = async function ask(url, config) {
