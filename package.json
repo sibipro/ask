@@ -26,6 +26,12 @@
     "collectCoverage": true,
     "coverageDirectory": "coverage"
   },
+  "prettier": {
+    "singleQuote": true,
+    "jsxBracketSameLine": true,
+    "printWidth": 120,
+    "trailingComma": "es5"
+  },
   "keywords": [
     "node-fetch",
     "http",
