@@ -71,8 +71,9 @@ describe('fetch request', () => {
       statusCode: 500,
       json: jest.fn(() => ['url 1', 'url 2']),
     });
+
     try {
-      return await ask('test/fetch/url', {
+      await ask('test/fetch/url', {
         method: 'get',
         headers: {
           id: '',
@@ -80,8 +81,11 @@ describe('fetch request', () => {
         responseType: 'json',
       });
     } catch (err) {
+      // eslint-disable-next-line jest/no-try-expect
       expect(err).toBeDefined();
+      // eslint-disable-next-line jest/no-try-expect
       expect(err.message).toEqual('Error thrown');
+      // eslint-disable-next-line jest/no-try-expect
       expect(err.statusCode).toEqual(500);
     }
   });
