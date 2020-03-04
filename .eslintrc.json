@@ -1,0 +1,3 @@
+{
+  "extends": ["@sibipro/eslint-config", "@sibipro/eslint-config-jest"]
+}

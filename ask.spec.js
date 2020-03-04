@@ -16,15 +16,15 @@ describe('fetch request', () => {
   test('returns json results', async () => {
     fetch.mockResolvedValue({
       ok: true,
-      json: jest.fn(() => ['url 1', 'url 2'])
+      json: jest.fn(() => ['url 1', 'url 2']),
     });
 
     const response = await ask('test/fetch/url', {
       method: 'get',
       headers: {
-        id: ''
+        id: '',
       },
-      responseType: 'json'
+      responseType: 'json',
     });
 
     expect(response).toEqual(['url 1', 'url 2']);
@@ -33,15 +33,15 @@ describe('fetch request', () => {
   test('returns text results', async () => {
     fetch.mockResolvedValue({
       ok: true,
-      text: jest.fn(() => ['url 1', 'url 2'])
+      text: jest.fn(() => ['url 1', 'url 2']),
     });
 
     const response = await ask('test/fetch/url', {
       method: 'get',
       headers: {
-        id: ''
+        id: '',
       },
-      responseType: 'text'
+      responseType: 'text',
     });
 
     expect(response).toEqual(['url 1', 'url 2']);
@@ -50,15 +50,15 @@ describe('fetch request', () => {
   test('returns raw results', async () => {
     fetch.mockResolvedValue({
       ok: true,
-      body: ['url 1', 'url 2']
+      body: ['url 1', 'url 2'],
     });
 
     const response = await ask('test/fetch/url', {
       method: 'get',
       headers: {
-        id: ''
+        id: '',
       },
-      responseType: 'raw'
+      responseType: 'raw',
     });
 
     expect(response).toEqual({ ok: true, body: ['url 1', 'url 2'] });
@@ -69,19 +69,23 @@ describe('fetch request', () => {
       ok: false,
       statusText: 'Error thrown',
       statusCode: 500,
-      json: jest.fn(() => ['url 1', 'url 2'])
+      json: jest.fn(() => ['url 1', 'url 2']),
     });
+
     try {
-      return await ask('test/fetch/url', {
+      await ask('test/fetch/url', {
         method: 'get',
         headers: {
-          id: ''
+          id: '',
         },
-        responseType: 'json'
+        responseType: 'json',
       });
     } catch (err) {
+      // eslint-disable-next-line jest/no-try-expect
       expect(err).toBeDefined();
+      // eslint-disable-next-line jest/no-try-expect
       expect(err.message).toEqual('Error thrown');
+      // eslint-disable-next-line jest/no-try-expect
       expect(err.statusCode).toEqual(500);
     }
   });
