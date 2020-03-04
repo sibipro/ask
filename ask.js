@@ -4,7 +4,7 @@ module.exports = async function ask(url, config) {
   try {
     const defaults = {
       responseType: 'json',
-      method: 'get'
+      method: 'get',
     };
     const { responseType, ...init } = { ...defaults, ...config };
     const response = await fetch(url, init);
