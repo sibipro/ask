@@ -64,6 +64,17 @@ describe('fetch request', () => {
     expect(response).toEqual({ ok: true, body: ['url 1', 'url 2'] });
   });
 
+  test('works without a config object', async () => {
+    fetch.mockResolvedValue({
+      ok: true,
+      json: jest.fn(() => ['url 1', 'url 2']), // treats response as json by default
+    });
+
+    const response = await ask('test/fetch/url');
+
+    expect(response).toEqual(['url 1', 'url 2']);
+  });
+
   test('response not ok throws error', async () => {
     fetch.mockResolvedValue({
       ok: false,

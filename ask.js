@@ -14,7 +14,7 @@ const encodeBody = config => {
   return { ...config, body: JSON.stringify(config.body) };
 };
 
-module.exports = async function ask(url, config) {
+module.exports = async function ask(url, config = {}) {
   const { responseType, ...init } = { ...defaults, ...encodeBody(config) };
   const response = await fetch(url, init);
 
